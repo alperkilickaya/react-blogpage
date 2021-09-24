@@ -34,6 +34,8 @@ const useStyles = makeStyles({
     },
     avatar:{
         backgroundColor:"#1B6682",
+        width: "100px",
+        height: "100px",
     },
     google:{
         color: "red"
@@ -69,7 +71,7 @@ const Login = () =>{
             <Grid container spacing={3} className={classes.formLogin}>
                 <Grid item xs={12}>
                     <Grid align="center">
-                        <Avatar className={classes.avatar}><AssignmentIndRoundedIcon/></Avatar>
+                        <Avatar className={classes.avatar}><AssignmentIndRoundedIcon sx={{fontSize:50}}/></Avatar>
                         <h2>Sign UP</h2>
                     </Grid>
                 </Grid>
