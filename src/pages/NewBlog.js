@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import  {useHistory} from 'react-router-dom';
+import NavBar from '../components/AppBar'
 import { makeStyles } from '@material-ui/core';
 import { Grid,Avatar,TextField,Button} from '@material-ui/core';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
@@ -63,6 +64,8 @@ const Login = () =>{
    
 
     return(
+        <>
+        <NavBar />
         <Grid className={classes.container}>
             <Grid container spacing={3} className={classes.formLogin}>
                 <Grid item xs={12}>
@@ -110,6 +113,7 @@ const Login = () =>{
                 </Grid>
             </Grid>
         </Grid>
+        </>
     )
 }
 

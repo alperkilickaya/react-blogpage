@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -9,29 +9,33 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
+import Button from '@mui/material/Button';
 import { makeStyles } from '@material-ui/core';
 import { useFetch } from '../helpers/functions';
+import { AuthContext } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
-
-    const number = [1,2,3,4,5,6,7]
-
-
-    const useStyles = makeStyles({
-        blogContainer:{
-            backgroundImage: `url(${"https://picsum.photos/1200/900"})`,
-            backgroundSize:"100% 100%",
-            height: "100vh",
-           
-            
-        }
-    })
+const useStyles = makeStyles({
+    blogContainer:{
+        backgroundImage: `url(${"https://picsum.photos/1200/900"})`,
+        backgroundSize:"100% 100%",
+        height: "100vh",        
+    },
+    link:{
+        textDecoration: "none"
+    }
+})
 
 
 export default function BlogCard() {
 
+    const {currentUser} = useContext(AuthContext);
     const {blogList} = useFetch();
-
     const classes = useStyles();
+
+    const handleBlogDetail = (item) =>{
+        console.log(item.id);
+    }
 
   return (
     <Grid container spacing={0} className={classes.blogContainer}>
@@ -40,7 +44,10 @@ export default function BlogCard() {
             <Grid item xs={12} sm={6} md={4} >
                 <div style={{padding:"40px"}}>
                 <Card key={item.id} >
-                    <CardHeader>{item.title}</CardHeader>
+                    <CardHeader
+                      title={item.title}
+                      subheader={item.id}
+                    />
                     <CardMedia
                         component="img"
                         height="194"
@@ -52,6 +59,18 @@ export default function BlogCard() {
                         {item.content}
                         </Typography>
                     </CardContent>
+                    <Link
+                    className={classes.link}
+                    to={currentUser ? `/blog/${item.id}` : "/login"}
+                    >
+                    <Button 
+                    variant="contained" 
+                    href="#contained-buttons"
+                    onClick={()=> handleBlogDetail(item)}
+                    >
+                    Read More
+                    </Button>
+                    </Link>
                     <CardActions disableSpacing>
                         <IconButton aria-label="add to favorites">
                         <FavoriteIcon />

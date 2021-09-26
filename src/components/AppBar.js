@@ -102,7 +102,7 @@ const MenuAppBar=()=> {
               >
                 {currentUser ? (
                 <>  
-                <MenuItem>Profile</MenuItem>
+                <MenuItem onClick={()=>history.push("/profile")}>Profile</MenuItem>
                 <MenuItem onClick={()=>history.push("/newblog")}>Add Blog</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </>

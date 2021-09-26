@@ -12,12 +12,12 @@ const firebaseApp = firebase.initializeApp({
 
 });
 
-export const createUser = async (email, password, username) => {
+export const createUser = async (email, password, displayName) => {
     try{
         await firebase.auth().createUserWithEmailAndPassword(email,password)
 
         const currentUser = firebase.auth().currentUser;
-        await currentUser.updateProfile({username})
+        await currentUser.updateProfile({displayName})
 
     }catch(error){
         alert("Bu mail ile daha önce kayıt oluşturulmuş!")

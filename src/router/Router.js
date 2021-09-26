@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Main from "../pages/Main";
 import Register from "../pages/Register";
 import NewBlog from "../pages/NewBlog";
+import Profile from "../pages/Profile";
 
 const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ const AppRouter = () => {
       <AuthProvider>
         <Switch>
           <PrivateRoute path="/newblog" component={NewBlog} />
+          <PrivateRoute path="/profile" component={Profile} />
           <Route exact path="/" component={Main} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
