@@ -15,38 +15,17 @@ const firebaseApp = firebase.initializeApp({
 export const createUser = async (email, password, username) => {
     try{
         await firebase.auth().createUserWithEmailAndPassword(email,password)
-        .then((userCredential) =>{
-            //signed in
-            //var user = userCredential.user;
-            //console.log("Kayıt Olan Kullanıcı", user);
-            
-        })
-        .catch((error)=>{
-            //var errorCode = error.code;
-            //var errorMessage = error.message;
-        });
 
         const currentUser = firebase.auth().currentUser;
         await currentUser.updateProfile({username})
+
     }catch(error){
         alert("Bu mail ile daha önce kayıt oluşturulmuş!")
     }
 }
 
-export const SignIn = async (email, password) => {
-    firebase.auth().signInWithEmailAndPassword(email,password)
-    .then((userCredential)=>{
-        // Signed in
-        //var user = userCredential.user;
-        //console.log('SIGNIN user', user)
-        
-    })
-    .catch((error)=>{
-        //var errorCode = error.code;
-        //var errorMessage = error.message;
-        alert("Kullanıcı adı veya şifre hatalı!")
-    })
-
+export const SignIn =  (email, password) => {
+    return firebase.auth().signInWithEmailAndPassword(email,password)
 }
 
 export const userObserver = async (setCurrentUser) => {

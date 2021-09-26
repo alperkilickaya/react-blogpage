@@ -6,3 +6,4 @@ export const addBlog = (newBlog) => {
   const blogRef = firebase.database().ref("blog");
   blogRef.push(newBlog);
 };
+

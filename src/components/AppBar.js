@@ -75,9 +75,6 @@ const MenuAppBar=()=> {
           <Typography align="start" variant="h6" component="div" sx={{ flexGrow: 1 }}
             
           ></Typography>
-
-          {currentUser ? (
-            <div>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -103,27 +100,19 @@ const MenuAppBar=()=> {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
+                {currentUser ? (
+                <>  
                 <MenuItem>Profile</MenuItem>
                 <MenuItem onClick={()=>history.push("/newblog")}>Add Blog</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
-            </div>
-          ):(
-            <Stack direction="row" spacing={2}>
-              <Button variant="contained" startIcon={< LoginIcon/>} 
-              
-              onClick={()=>history.push("/login")}
-              >
-              Login
-              </Button>
-              <Button variant="contained" endIcon={<PersonAddIcon />} 
-              color="error"
-              onClick={()=>history.push("/register")}
-              >
-                Register
-              </Button>
-           </Stack>
-          )}
+                </>
+                ) : (
+                <>  
+                <MenuItem onClick={()=>history.push("/login")}>Login</MenuItem>
+                <MenuItem onClick={()=>history.push("/register")}>Register</MenuItem>
+                </>
+                )}
+              </Menu>  
         </Toolbar>
       </AppBar>
     </Box>

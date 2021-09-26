@@ -18,7 +18,7 @@ const useStyles = makeStyles({
         
     },
     formLogin:{
-        maxWidth: "50%",
+        maxWidth: "400px",
         minHeight: "20vh",
         background: "white",
         borderRadius:"10px",

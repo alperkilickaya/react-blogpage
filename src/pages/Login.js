@@ -19,7 +19,7 @@ const useStyles = makeStyles({
         
     },
     formLogin:{
-        maxWidth: "40%",
+        maxWidth: "350px",
         minHeight: "20vh",
         background: "white",
         borderRadius:"10px",
@@ -44,9 +44,7 @@ const useStyles = makeStyles({
 
 const Login = () =>{
     
-
     const history = useHistory();
-
     const classes = useStyles();
 
     const [email, setEmail] = useState("");
@@ -56,11 +54,15 @@ const Login = () =>{
         SignUpProvider();
     }
 
-    const handleLogin =  () => {
+   const handleLogin= async () => {
         const user = {email, password}
-        SignIn(user.email, user.password);
-       
-    }
+        try{
+            await SignIn(user.email, user.password)
+            history.push("/")
+        }catch{  
+            alert("Kullanıcı Adı veya Şifre Hatalı!")
+        }      
+    }      
 
     return(
         <Grid className={classes.container}>
