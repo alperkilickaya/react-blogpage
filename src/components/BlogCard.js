@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import { makeStyles } from '@material-ui/core';
+import { useFetch } from '../helpers/functions';
 
 
     const number = [1,2,3,4,5,6,7]
@@ -19,6 +20,7 @@ import { makeStyles } from '@material-ui/core';
         blogContainer:{
             backgroundImage: `url(${"https://picsum.photos/1200/900"})`,
             backgroundSize:"100% 100%",
+            height: "100vh",
            
             
         }
@@ -27,28 +29,27 @@ import { makeStyles } from '@material-ui/core';
 
 export default function BlogCard() {
 
+    const {blogList} = useFetch();
+
     const classes = useStyles();
 
   return (
     <Grid container spacing={0} className={classes.blogContainer}>
-        {number.map((el,index) => {
+        {blogList.map((item) => {
             return (
             <Grid item xs={12} sm={6} md={4} >
                 <div style={{padding:"40px"}}>
-                <Card key={index} >
-                    <CardHeader
-                    />
+                <Card key={item.id} >
+                    <CardHeader>{item.title}</CardHeader>
                     <CardMedia
                         component="img"
                         height="194"
-                        image="/static/images/cards/paella.jpg"
-                        alt="Paella dish"
+                        image={item.image}
+                        alt={item.image}
                     />
                     <CardContent>
                         <Typography variant="body2" color="text.secondary">
-                        This impressive paella is a perfect party dish and a fun meal to cook
-                        together with your guests. Add 1 cup of frozen peas along with the mussels,
-                        if you like.
+                        {item.content}
                         </Typography>
                     </CardContent>
                     <CardActions disableSpacing>
