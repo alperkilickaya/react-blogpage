@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import { makeStyles } from '@material-ui/core';
 import { useFetch } from '../helpers/functions';
 import { AuthContext } from '../context/AuthContext';
+
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -29,12 +30,14 @@ const useStyles = makeStyles({
 
 export default function BlogCard() {
 
-    const {currentUser} = useContext(AuthContext);
+    const {currentUser,setBlogCard} = useContext(AuthContext);
     const {blogList} = useFetch();
     const classes = useStyles();
 
     const handleBlogDetail = (item) =>{
-        console.log(item.id);
+        setBlogCard(item)
+        console.log(item)
+        
     }
 
   return (
@@ -56,7 +59,9 @@ export default function BlogCard() {
                     />
                     <CardContent>
                         <Typography variant="body2" color="text.secondary">
-                        {item.content}
+                        {item.content?.length < 200
+                          ? item.content
+                          : item.content.slice(0, 200) + "..."}
                         </Typography>
                     </CardContent>
                     <Link
@@ -65,7 +70,7 @@ export default function BlogCard() {
                     >
                     <Button 
                     variant="contained" 
-                    href="#contained-buttons"
+                    
                     onClick={()=> handleBlogDetail(item)}
                     >
                     Read More

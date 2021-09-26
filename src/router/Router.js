@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Main from "../pages/Main";
 import Register from "../pages/Register";
 import NewBlog from "../pages/NewBlog";
+import BlogDetail from "../pages/BlogDetail";
 import Profile from "../pages/Profile";
 
 const AppRouter = () => {
@@ -14,6 +15,7 @@ const AppRouter = () => {
       <AuthProvider>
         <Switch>
           <PrivateRoute path="/newblog" component={NewBlog} />
+          <PrivateRoute path="/blog/:blogId" component={BlogDetail} />
           <PrivateRoute path="/profile" component={Profile} />
           <Route exact path="/" component={Main} />
           <Route path="/login" component={Login} />

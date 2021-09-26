@@ -6,14 +6,14 @@ export const AuthContext = createContext()
 function AuthProvider(props) {
 
     const [ currentUser, setCurrentUser] = useState()
-   
+    const [ blogCard, setBlogCard] = useState([])
 
     useEffect(()=>{
         userObserver(setCurrentUser);
     },[])
 
     return (
-        <AuthContext.Provider value={{currentUser}}>
+        <AuthContext.Provider value={{currentUser, blogCard, setBlogCard}}>
             {props.children}
         </AuthContext.Provider>
         
