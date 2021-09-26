@@ -10,7 +10,7 @@ import Profile from "../pages/Profile";
 
 const AppRouter = () => {
   return (
-    <Router> 
+    <Router basename="react-blogpage"> 
       <AuthProvider>
         <Switch>
           <PrivateRoute path="/newblog" component={NewBlog} />
