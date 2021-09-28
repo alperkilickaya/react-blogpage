@@ -13,7 +13,6 @@ import Button from '@mui/material/Button';
 import { makeStyles } from '@material-ui/core';
 import { useFetch } from '../helpers/functions';
 import { AuthContext } from '../context/AuthContext';
-
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -27,7 +26,6 @@ const useStyles = makeStyles({
     }
 })
 
-
 export default function BlogCard() {
 
     const {currentUser,setBlogCard} = useContext(AuthContext);
@@ -36,10 +34,8 @@ export default function BlogCard() {
 
     const handleBlogDetail = (item) =>{
         setBlogCard(item)
-        console.log(item)
-        
+        console.log(item) 
     }
-
   return (
     <Grid container spacing={0} className={classes.blogContainer}>
         {blogList.map((item) => {
@@ -49,13 +45,12 @@ export default function BlogCard() {
                 <Card key={item.id} >
                     <CardHeader
                       title={item.title}
-                      subheader={item.id}
                     />
                     <CardMedia
                         component="img"
                         height="194"
-                        image={item.image}
-                        alt={item.image}
+                        image={item.url}
+                        alt={item.title}
                     />
                     <CardContent>
                         <Typography variant="body2" color="text.secondary">

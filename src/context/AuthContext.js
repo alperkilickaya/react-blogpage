@@ -7,6 +7,7 @@ function AuthProvider(props) {
 
     const [ currentUser, setCurrentUser] = useState()
     const [ blogCard, setBlogCard] = useState([])
+   
 
     useEffect(()=>{
         userObserver(setCurrentUser);

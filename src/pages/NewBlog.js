@@ -4,7 +4,7 @@ import NavBar from '../components/AppBar'
 import { makeStyles } from '@material-ui/core';
 import { Grid,Avatar,TextField,Button} from '@material-ui/core';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
-import { addBlog } from '../helpers/functions';
+import { addBlog, addImage } from '../helpers/functions';
 import uuid from 'react-uuid'
 
 const useStyles = makeStyles({
@@ -57,9 +57,10 @@ const Login = () =>{
     const handleBlog = (e) => {
         e.preventDefault();
         const id = uuid();
-        const newBlog = { id, title, image, content };
+        const newBlog = { id, title, image, content};
         history.push("/");
         addBlog(newBlog);
+       
     };
    
 
@@ -82,10 +83,10 @@ const Login = () =>{
                 <Grid item xs={12}>
                     <TextField id="standard-basic" 
                     variant="outlined" 
-                    placeholder="Enter Image" 
+                    placeholder="Upload Image" 
                     type="file" 
                     fullWidth required
-                    onChange={(e)=> setImage(e.target.value)}
+                    onChange={(e)=> setImage(e.target.files[0])}
                     />
                 </Grid> 
                 <Grid item xs={12}>
