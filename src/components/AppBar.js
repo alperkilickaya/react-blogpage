@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import logo from '../../src/logo.svg'
+import logo from '../../src/logo.svg';
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,12 +10,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useHistory } from 'react-router-dom';
-import {AuthContext} from '../context/AuthContext'
-import {Logout} from '../helpers/firebase'
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import LoginIcon from '@mui/icons-material/Login';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import {AuthContext} from '../context/AuthContext';
+import {Logout} from '../helpers/firebase';
+
 
 
 const useStyles = makeStyles({
@@ -32,8 +29,7 @@ const MenuAppBar=()=> {
 
   const history = useHistory();
   const { currentUser } = useContext(AuthContext);
-
-  const [auth, setAuth] = React.useState(true);
+  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const classes = useStyles();
 

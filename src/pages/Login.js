@@ -6,6 +6,7 @@ import { Grid,Avatar,TextField,Button} from '@material-ui/core';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import GoogleIcon from '@mui/icons-material/Google';
 import { SignIn, SignUpProvider } from "../helpers/firebase";
+import { successToastify, failToastify } from  "../helpers/toastify"
 
 
 const useStyles = makeStyles({
@@ -56,12 +57,14 @@ const Login = () =>{
     }
 
    const handleLogin= async () => {
+    
         const user = {email, password}
         try{
             await SignIn(user.email, user.password)
+            successToastify("Loggin Successful!")
             history.push("/")
         }catch{  
-            alert("Kullanıcı Adı veya Şifre Hatalı!")
+            failToastify("User Creditentials Invalid!")
         }      
     }      
 

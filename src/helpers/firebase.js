@@ -1,6 +1,7 @@
 import firebase from "firebase";
 import "firebase/auth"
 import "firebase/firestore"
+import { successToastify, failToastify } from  "../helpers/toastify"
 
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyA5bJGRVva4FQaHT2-QWxCCJil_2s6K1zY",
@@ -15,12 +16,12 @@ const firebaseApp = firebase.initializeApp({
 export const createUser = async (email, password, displayName) => {
     try{
         await firebase.auth().createUserWithEmailAndPassword(email,password)
-
         const currentUser = firebase.auth().currentUser;
         await currentUser.updateProfile({displayName})
+        successToastify("Registered Successfully!")
 
     }catch(error){
-        alert("Bu mail ile daha önce kayıt oluşturulmuş!")
+      failToastify("Registration Failed!")
     }
 }
 

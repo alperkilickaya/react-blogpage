@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthProvider from '../context/AuthContext';
 import PrivateRoute from "./PrivateRouter";
-import Navbar from "../components/AppBar";
 import Login from "../pages/Login";
 import Main from "../pages/Main";
 import Register from "../pages/Register";

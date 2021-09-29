@@ -43,7 +43,7 @@ const useStyles = makeStyles({
     }
 })
 
-const Login = () =>{
+const Register = () =>{
 
     const history = useHistory();
 
@@ -63,8 +63,10 @@ const Login = () =>{
         const user = {firstName, lastName, email, password}
         const displayName= `${firstName} ${lastName}`
         createUser(user.email, user.password, displayName)
-        history.push("/")
-
+        .then(()=>{
+            history.push("/")
+        })
+  
     }
 
     return(
@@ -130,4 +132,4 @@ const Login = () =>{
     )
 }
 
-export default Login
+export default Register

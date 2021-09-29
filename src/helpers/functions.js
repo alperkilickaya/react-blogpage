@@ -1,5 +1,6 @@
 import firebase from "./firebase";
 import { useState, useEffect } from "react";
+import { successToastify } from  "../helpers/toastify"
 
 
 
@@ -13,9 +14,8 @@ export const addBlog = (newBlog) => {
       newBlog.url = url
       const blogRef = firebase.database().ref("blog");
       blogRef.push(newBlog);
+      successToastify("Blog Added Successfully!");
     })
-    
-
 
   })
   

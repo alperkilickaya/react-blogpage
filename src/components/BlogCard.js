@@ -17,9 +17,8 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     blogContainer:{
-        backgroundImage: `url(${"https://picsum.photos/1200/900"})`,
-        backgroundSize:"100% 100%",
-        height: "100vh",        
+        backgroundColor: "#b3f0f9",
+        minHeight:"100vh"  
     },
     link:{
         textDecoration: "none"

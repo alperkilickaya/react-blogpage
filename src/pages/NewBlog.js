@@ -4,7 +4,7 @@ import NavBar from '../components/AppBar'
 import { makeStyles } from '@material-ui/core';
 import { Grid,Avatar,TextField,Button} from '@material-ui/core';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
-import { addBlog, addImage } from '../helpers/functions';
+import { addBlog } from '../helpers/functions';
 import uuid from 'react-uuid'
 
 const useStyles = makeStyles({
